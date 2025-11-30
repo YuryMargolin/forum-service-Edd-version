@@ -16,7 +16,7 @@ class PostService {
     async addLike(postId) {
         const post = await postRepository.addLike(id);
         if (!post) {
-            throw new Error(`Post with id ${id} not found`);
+            throw new Error(`Post with id ${postId} not found`);
         }
         return post;
     }
@@ -27,9 +27,9 @@ class PostService {
 
     async addComment(postId, commenter, message) {
         const comment = {user: commenter, message};
-        const post = await postRepository.addComment(id, comment);
+        const post = await postRepository.addComment(postId, comment);
         if (!post) {
-            throw new Error(`Post with id ${id} not found`);
+            throw new Error(`Post with id ${postId} not found`);
         }
         return post;
     }
@@ -52,14 +52,14 @@ class PostService {
     }
 
     async updatePost(postId, data) {
-        const post = await postRepository.findPostById(id);
+        const post = await postRepository.findPostById(postId);
         if (!post) {
-            throw new Error(`Post with id ${id} not found`);
+            throw new Error(`Post with id ${postId} not found`);
         }
         if (data.tags) {
             data.tags.push(...post.tags);
         }
-        return await postRepository.updatePost(id, data);
+        return await postRepository.updatePost(postId, data);
     }
 }
 
