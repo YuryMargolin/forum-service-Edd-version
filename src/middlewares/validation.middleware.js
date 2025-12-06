@@ -32,6 +32,16 @@ const schemas = {
     updateUser: Joi.object({
         firstName: Joi.string(),
         lastName: Joi.string()
+    }),
+
+    addRole: Joi.object({
+        user: Joi.string().required(),
+        role: Joi.string().valid("user", "moderator", "administrator").insensitive().required()
+    }),
+
+    deleteRole: Joi.object({
+        user: Joi.string().required(),
+        role: Joi.string().valid("user", "moderator", "administrator").insensitive().required()
     })
 
 }

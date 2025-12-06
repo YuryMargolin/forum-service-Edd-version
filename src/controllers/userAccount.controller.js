@@ -10,10 +10,6 @@ class UserAccountController {
         }
     }
 
-    async login(req, res, next) {
-        //TODO: login user
-    }
-
     async getUser(req, res, next) {
         try {
             const user = await userAccountService.getUser(req.params.user);
@@ -41,10 +37,6 @@ class UserAccountController {
         }
     }
 
-    async changePassword(req, res, next) {
-        //TODO: change password
-    }
-
     async addRole(req, res, next) {
         try {
             const user = await userAccountService.changeRoles(req.params.user, req.params.role,true);
@@ -61,6 +53,14 @@ class UserAccountController {
         } catch (error) {
             return next(error);
         }
+    }
+
+    async login(req, res, next) {
+        //TODO: login user
+    }
+
+    async changePassword(req, res, next) {
+        //TODO: change password
     }
 }
 

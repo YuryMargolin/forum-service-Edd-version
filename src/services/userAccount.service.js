@@ -1,7 +1,6 @@
 import userAccountRepository from "../repositories/userAccount.repository.js";
 
 class UserAccountService {
-
     async register(user) {
         try{
             return await userAccountRepository.addUser(user);
@@ -51,12 +50,9 @@ class UserAccountService {
     }
 
     async changePassword(login, newPassword) {
-        // TODO: change password
+        const userAccount = await userAccountRepository.changePassword(login, newPassword);
     }
 
-    async login(login, password) {
-        // TODO: login user
-    }
 }
 
 export default new UserAccountService();
