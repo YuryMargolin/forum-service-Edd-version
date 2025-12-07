@@ -42,7 +42,7 @@ const schemas = {
 
     deleteRole: Joi.object({
         user: Joi.string().required(),
-        role: Joi.string().valid("user", "moderator", "administrator").insensitive().required()
+        role: Joi.string().valid(USER, MODER, ADMIN).insensitive().required()
     })
 
 }
