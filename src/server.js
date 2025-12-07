@@ -4,13 +4,15 @@ import config from "./config/config.js"
 import postRoutes from "./routes/post.routes.js"
 import userAccountRoutes from "./routes/userAccount.routes.js";
 import errorHandler from "./middlewares/error.middleware.js";
+import authentication from "./middlewares/authentication.middleware.js";
 
 const app = express()
 
-app.use(express.json())
+app.use(express.json());
+app.use(authentication);
 
-app.use('/forum', postRoutes)
-app.use('/account', userAccountRoutes)
+app.use('/forum', postRoutes);
+app.use('/account', userAccountRoutes);
 
 app.use(errorHandler)
 
