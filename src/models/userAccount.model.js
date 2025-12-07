@@ -41,11 +41,6 @@ userAccountSchema.pre('save', async function() {
     }
 })
 
-// userAccountSchema.pre('findOneAndUpdate', async function() {
-//     if(this.isModified('password')) {
-//         const salt = await bcrypt.genSalt(12);
-//         this.password = await bcrypt.hash(this.password, salt);
-//     }
-// })
+
 
 export default model('UserAccount', userAccountSchema, 'users');

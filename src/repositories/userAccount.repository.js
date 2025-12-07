@@ -27,7 +27,11 @@ class UserAccountRepository {
     }
 
     async changePassword(login, password) {
-        return UserAccount.findOneAndUpdate({_id: login},{$set: {password}}, {new: true});
+        const user = await UserAccount.findById(login);
+        if (!user) return null;
+        user.password = password;
+        await user.save();
+        return user;
     }
 
 }
