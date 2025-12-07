@@ -51,8 +51,10 @@ class UserAccountService {
 
     async changePassword(login, newPassword) {
         const userAccount = await userAccountRepository.changePassword(login, newPassword);
+        if (!userAccount) {
+            throw new Error(`User with login ${login} not found`);
+        }
     }
-
 }
 
 export default new UserAccountService();

@@ -28,10 +28,12 @@ class UserAccountRepository {
 
     async changePassword(login, password) {
         const user = await UserAccount.findById(login);
-        if (!user) return null;
-        user.password = password;
-        await user.save();
-        return user;
+        if (user) {
+            user.password = password;
+            await user.save();
+            return user;
+        }
+
     }
 
 }
