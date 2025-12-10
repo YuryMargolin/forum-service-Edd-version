@@ -14,7 +14,7 @@ class PostService {
     }
 
     async addLike(postId) {
-        const post = await postRepository.addLike(id);
+        const post = await postRepository.addLike(postId);
         if (!post) {
             throw new Error(`Post with id ${postId} not found`);
         }
