@@ -1,4 +1,5 @@
 import express, {Router} from 'express'
+import cors from 'cors'
 import mongoose from 'mongoose'
 import config from "./config/config.js"
 import postRoutes from "./routes/post.routes.js"
@@ -8,10 +9,12 @@ import authentication from "./middlewares/authentication.middleware.js";
 import authorization from "./middlewares/authorization.middleware.js";
 import {createAdmin} from "./config/initAdmin.js";
 import {ADMIN, MODER} from "./config/constants.js";
+import {corsOptions} from './config/corsOptions.js';
 
 const app = express()
 const authorizationRouter = Router();
 
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(authentication);
 // app.use(/^\/account\/user\/\w+\/role\/\w+$/, authorization.hasRole(ADMIN));
